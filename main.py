@@ -9,10 +9,6 @@ import time
 
 logging.basicConfig(level=logging.INFO)
 
-# Make an arg
-assistant_name = os.environ.get("ASSISTANT_ID")
-
-# Initialize your app with your bot token and signing secret
 app = App(
     token=os.environ.get("SLACK_BOT_TOKEN"),
     signing_secret=os.environ.get("SLACK_SIGNING_SECRET")
@@ -24,6 +20,7 @@ client = OpenAI(
 
 thread = client.beta.threads.create()
 
+assistant_name = os.environ.get("ASSISTANT_ID")
 assistant = client.beta.assistants.retrieve(assistant_name)
 
 stack_queue = LifoQueue()
@@ -35,10 +32,7 @@ def create_vector_store():
     """
 
     vector_store = client.beta.vector_stores.create(name="security data")
-
     new_data = " ".join(stack_queue.queue).encode('utf-8')
-
-    print(f"new data {new_data}")
 
     if not new_data:
         return
