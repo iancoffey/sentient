@@ -8,5 +8,5 @@ Uner the hood sentient uses vector stores with file resources to provide a near 
 
 Users of any skill level can flag relevant security messages in slack using reactions, and use the tuned LLM to research timeframes using natural language.
 
-![Bot Output Image](docs/images/botoutput..png)
+![Bot Output Image](docs/images/botoutput.png)
 
